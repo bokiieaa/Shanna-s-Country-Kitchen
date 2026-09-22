@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanna's Country Kitchen | Breakfast & Lunch Diner in Lincoln, RI</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8f3',
+                            100: '#f7ebd9',
+                            200: '#efd5b3',
+                            300: '#e3b683',
+                            400: '#d48d50',
+                            500: '#c26927',
+                            600: '#a84e1b',
+                            700: '#8c3a19',
+                            800: '#6f2d18',
+                            900: '#34150a',
+                        },
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e3ebe3',
+                            600: '#4e7354',
+                            700: '#3c5a41',
+                            800: '#2c4330',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        hand: ['Caveat', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .chalkboard {
+            background-color: #1a251c;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 0);
+            background-size: 16px 16px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-brand-50 text-gray-800 font-sans antialiased selection:bg-brand-400 selection:text-white pb-16 md:pb-0">
+
+    <div id="status-bar" class="bg-brand-900 text-brand-100 text-xs md:text-sm py-2.5 px-4 border-b border-brand-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-2">
+                <span id="status-dot" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="status-text" class="font-semibold tracking-wide uppercase text-xs">Checking Status...</span>
+                <span class="text-brand-700 hidden sm:inline">|</span>
+                <span class="hidden sm:inline text-brand-200">Tue–Sun: 6:00 AM – 1:00 PM (Mon: Closed)</span>
+            </div>
+            <div class="flex items-center space-x-4 text-xs">
+                <a href="tel:4017255670" class="hover:text-brand-300 transition-colors flex items-center gap-1.5 font-medium">
+                    <i class="fa-solid fa-phone text-brand-400"></i> (401) 725-5670
+                </a>
+                <span class="text-brand-700">|</span>
+                <a href="https://maps.google.com/?q=1517+Old+Louisquisset+Pike,+Lincoln,+RI+02865" target="_blank" class="hover:text-brand-300 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-brand-400"></i> 1517 Old Louisquisset Pike, Lincoln, RI
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-40 bg-brand-50/95 backdrop-blur-md border-b border-brand-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-700 flex items-center justify-center text-brand-100 shadow-md group-hover:bg-brand-600 transition-colors border-2 border-brand-300">
+                        <i class="fa-solid fa-mug-hot text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="block font-serif font-bold text-xl md:text-2xl text-brand-900 leading-tight">Shanna's</span>
+                        <span class="block text-xs uppercase tracking-widest text-brand-600 font-bold">Country Kitchen</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-7 font-semibold text-brand-900 text-sm">
+                    <a href="#home" class="hover:text-brand-500 transition-colors">Home</a>
+                    <a href="#specials" class="hover:text-brand-500 transition-colors">Whiteboard Specials</a>
+                    <a href="#menu" class="hover:text-brand-500 transition-colors">Complete Menu</a>
+                    <a href="#about" class="hover:text-brand-500 transition-colors">About Us</a>
+                    <a href="#location" class="hover:text-brand-500 transition-colors">Hours & Map</a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center space-x-3">
+                    <a href="tel:4017255670" class="hidden sm:inline-flex items-center px-4 py-2.5 rounded-full bg-sage-700 hover:bg-sage-800 text-white font-bold text-xs shadow-md transition-all">
+                        <i class="fa-solid fa-phone mr-2"></i> Call Takeout: (401) 725-5670
+                    </a>
+
+                    <button onclick="openModal('contact')" class="hidden sm:inline-flex items-center px-4 py-2.5 rounded-full border border-brand-700 text-brand-800 hover:bg-brand-100 font-bold text-xs transition-all">
+                        <i class="fa-regular fa-envelope mr-1.5"></i> Contact
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-brand-900 text-2xl p-1 focus:outline-none">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-50 border-b border-brand-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-brand-900 font-medium border-b border-brand-100">Home</a>
+            <a href="#specials" onclick="toggleMobileMenu()" class="block py-2 text-brand-900 font-medium border-b border-brand-100">Whiteboard Specials</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block py-2 text-brand-900 font-medium border-b border-brand-100">Full Diner Menu (39 Items)</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-brand-900 font-medium border-b border-brand-100">About Shanna's Kitchen</a>
+            <a href="#location" onclick="toggleMobileMenu()" class="block py-2 text-brand-900 font-medium">Hours & Directions</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="tel:4017255670" class="w-full text-center py-2.5 rounded-full bg-sage-700 text-white font-bold text-xs">
+                    <i class="fa-solid fa-phone mr-2"></i> Call to Order Takeout
+                </a>
+                <button onclick="toggleMobileMenu(); openModal('contact');" class="w-full text-center py-2.5 rounded-full bg-brand-100 text-brand-900 font-bold border border-brand-300 text-xs">
+                    <i class="fa-regular fa-envelope mr-1.5"></i> Send Message
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative bg-brand-900 text-white overflow-hidden py-16 md:py-24">
+        <div class="absolute inset-0 z-0 opacity-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/90 to-transparent z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 bg-brand-800/90 border border-brand-600/50 px-4 py-1.5 rounded-full text-brand-200 text-xs font-semibold">
+                    <i class="fa-solid fa-location-dot text-brand-400"></i>
+                    <span>Lincoln, Rhode Island's Favorite Local Breakfast Spot</span>
+                </div>
+                
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-brand-50">
+                    Warm Hospitality & <br class="hidden sm:inline">
+                    <span class="text-brand-300 font-hand text-5xl sm:text-6xl lg:text-7xl font-normal">Scratch-Made Comfort.</span>
+                </h1>
+
+                <p class="text-brand-100/90 text-base md:text-lg max-w-xl font-light leading-relaxed">
+                    Welcome to Shanna’s Country Kitchen! A cozy local diner serving golden pancakes, slow-simmered corned beef hash, hot espresso iced coffees, and hearty lunch plates in Lincoln, RI.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-2">
+                    <a href="tel:4017255670" class="w-full sm:w-auto px-8 py-3.5 bg-sage-700 hover:bg-sage-800 text-white font-bold rounded-full shadow-lg transition-all text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone"></i> Call Takeout: (401) 725-5670
+                    </a>
+                    <a href="#menu" class="w-full sm:w-auto px-8 py-3.5 bg-brand-50 hover:bg-white text-brand-900 font-bold rounded-full shadow-md transition-all text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-book-open text-brand-600"></i> View Full Menu
+                    </a>
+                </div>
+
+                <div class="pt-4 flex flex-wrap items-center justify-center md:justify-start gap-6 text-xs text-brand-200">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-regular fa-clock text-brand-300"></i>
+                        <span>Tue-Sun: 6 AM – 1 PM</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-chair text-brand-300"></i>
+                        <span>Cozy Walk-in Seating</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagery Grid -->
+            <div class="md:col-span-5 grid grid-cols-2 gap-3 relative">
+                <div class="space-y-3">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=600&auto=format&fit=crop" alt="Fluffy Pancakes" class="rounded-2xl shadow-xl object-cover h-48 w-full border-2 border-brand-700/50 hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=600&auto=format&fit=crop" alt="Breakfast Eggs" class="rounded-2xl shadow-xl object-cover h-36 w-full border-2 border-brand-700/50 hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="space-y-3 pt-6">
+                    <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop" alt="Flavored Iced Coffee" class="rounded-2xl shadow-xl object-cover h-36 w-full border-2 border-brand-700/50 hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=600&auto=format&fit=crop" alt="Diner Burger" class="rounded-2xl shadow-xl object-cover h-48 w-full border-2 border-brand-700/50 hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specials" class="py-16 bg-brand-100/60 border-y border-brand-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="font-hand text-3xl text-brand-600 font-bold">Local Favorites</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mt-1">Shanna's Whiteboard Specials</h2>
+                <p class="text-gray-600 text-sm mt-2">Cooked fresh every morning in our Lincoln kitchen!</p>
+            </div>
+
+            <div class="chalkboard rounded-3xl p-6 md:p-10 text-white shadow-2xl border-8 border-brand-800 relative overflow-hidden">
+                <div class="grid md:grid-cols-3 gap-8 relative z-10">
+                    <!-- Special 1 -->
+                    <div class="border border-emerald-500/30 rounded-2xl p-5 bg-emerald-950/40 backdrop-blur-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="bg-emerald-500/20 text-emerald-300 text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-500/40">House Specialty</span>
+                                <span class="font-serif text-xl font-bold text-amber-300">$11.99</span>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Scratch-Made Corned Beef Hash</h3>
+                            <p class="text-emerald-100/80 text-xs leading-relaxed">Slow-simmered brisket seasoned with house spices, diced potatoes, crisp onions, served with 2 poached eggs and rye toast.</p>
+                        </div>
+                        <a href="tel:4017255670" class="mt-5 text-center py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all block">
+                            <i class="fa-solid fa-phone mr-1"></i> Call to Order Hash Special
+                        </a>
+                    </div>
+
+                    <!-- Special 2 -->
+                    <div class="border border-amber-500/30 rounded-2xl p-5 bg-amber-950/40 backdrop-blur-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="bg-amber-500/20 text-amber-300 text-xs font-semibold px-2.5 py-1 rounded-full border border-amber-500/40">Griddle Craze</span>
+                                <span class="font-serif text-xl font-bold text-amber-300">$9.99</span>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Oreo Stuffed Belgian Waffle</h3>
+                            <p class="text-amber-100/80 text-xs leading-relaxed">Golden waffle iron baked with crushed Oreo cookies inside, topped with whipped cream, chocolate drizzle, and powdered sugar.</p>
+                        </div>
+                        <a href="tel:4017255670" class="mt-5 text-center py-2 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-bold transition-all block">
+                            <i class="fa-solid fa-phone mr-1"></i> Call to Order Waffles
+                        </a>
+                    </div>
+
+                    <!-- Special 3 -->
+                    <div class="border border-orange-500/30 rounded-2xl p-5 bg-orange-950/40 backdrop-blur-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="bg-orange-500/20 text-orange-300 text-xs font-semibold px-2.5 py-1 rounded-full border border-orange-500/40">Barista Craft</span>
+                                <span class="font-serif text-xl font-bold text-amber-300">$3.75</span>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white mb-2">Specialty Flavored Iced Coffees</h3>
+                            <p class="text-orange-100/80 text-xs leading-relaxed">Fresh espresso cold brew blended with choices like S'Mores, Waffle Cone, Mocha Turtle, Raspberry Chocolate, or Jmocha!</p>
+                        </div>
+                        <a href="tel:4017255670" class="mt-5 text-center py-2 bg-orange-600 hover:bg-orange-500 text-white rounded-xl text-xs font-bold transition-all block">
+                            <i class="fa-solid fa-phone mr-1"></i> Call for Coffee Pickup
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="text-brand-600 font-bold uppercase tracking-wider text-xs">Fresh Ingredients, Cooked To Order</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-brand-900 mt-1">Shanna's Complete Diner Menu</h2>
+            <p class="text-gray-600 text-sm md:text-base mt-2">Serving breakfast all day along with delicious diner lunch favorites in Lincoln, RI. Explore all 39 home-style options below.</p>
+        </div>
+
+        <!-- Menu Search & Filters -->
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-brand-200 mb-8 grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            <div class="md:col-span-6 relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400"></i>
+                <input type="text" id="menu-search" oninput="filterMenuItems()" placeholder="Search pancakes, omelets, bennies, burgers, iced coffees..." class="w-full pl-10 pr-4 py-2.5 bg-brand-50/50 border border-brand-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-400">
+            </div>
+
+            <div class="md:col-span-3">
+                <select id="dietary-filter" onchange="filterMenuItems()" class="w-full py-2.5 px-3 bg-brand-50/50 border border-brand-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-400">
+                    <option value="all">All Dietary Preferences</option>
+                    <option value="vegetarian">Vegetarian Friendly</option>
+                    <option value="popular">Diner Favorites</option>
+                </select>
+            </div>
+
+            <div class="md:col-span-3">
+                <select id="price-sort" onchange="filterMenuItems()" class="w-full py-2.5 px-3 bg-brand-50/50 border border-brand-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-400">
+                    <option value="default">Sort by: Default</option>
+                    <option value="low-high">Price: Low to High</option>
+                    <option value="high-low">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex overflow-x-auto hide-scrollbar space-x-2 pb-4 mb-8 border-b border-brand-200" id="category-tabs">
+            <!-- Tabs dynamically rendered -->
+        </div>
+
+        <!-- Menu Cards Grid -->
+        <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic JS Output -->
+        </div>
+
+        <!-- Empty Search Result State -->
+        <div id="no-results" class="hidden text-center py-12">
+            <i class="fa-solid fa-utensils text-4xl text-gray-300 mb-3"></i>
+            <h3 class="font-serif text-lg font-bold text-gray-700">No menu items matched your search</h3>
+            <p class="text-xs text-gray-500 mt-1">Try clearing filters or searching for terms like "eggs", "hash", or "coffee".</p>
+            <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-brand-700 text-white rounded-full text-xs font-semibold">Reset Filters</button>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 bg-brand-900 text-brand-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-6 relative">
+                <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-brand-700">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop" alt="Warm Cozy Diner Interior" class="w-full h-96 object-cover">
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-brand-400 text-white p-6 rounded-2xl shadow-xl hidden sm:block max-w-xs border-2 border-brand-300">
+                    <p class="font-hand text-3xl font-bold">"Made with love & local Rhode Island spirit!"</p>
+                    <p class="text-xs font-sans mt-1 text-brand-100">- Shanna's Kitchen Team</p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 space-y-5">
+                <span class="text-brand-300 font-hand text-3xl font-bold">Lincoln, RI Community Pride</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">Your Neighborhood Breakfast Table in Lincoln</h2>
+                
+                <p class="text-brand-100/80 text-sm leading-relaxed">
+                    At <strong class="text-brand-200">Shanna's Country Kitchen</strong> located on Old Louisquisset Pike, we believe in straightforward, delicious home cooking. Every morning, our team heats up the griddle early to whip up buttermilk pancakes, poach fresh eggs for our Benedicts, and brew hot roasted coffee for our Lincoln neighbors.
+                </p>
+
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <div class="bg-brand-800/60 p-4 rounded-xl border border-brand-700">
+                        <i class="fa-solid fa-egg text-brand-400 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-white text-sm">Scratch-Made Hash</h4>
+                        <p class="text-xs text-brand-200/70 mt-0.5">Slow-simmered brisket seasoned in-house daily.</p>
+                    </div>
+                    <div class="bg-brand-800/60 p-4 rounded-xl border border-brand-700">
+                        <i class="fa-solid fa-mug-hot text-brand-400 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-white text-sm">Iced Coffee Vault</h4>
+                        <p class="text-xs text-brand-200/70 mt-0.5">Custom flavor shots including S'Mores, Waffle Cone, and Mocha Turtle.</p>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <a href="tel:4017255670" class="px-6 py-3 bg-sage-700 hover:bg-sage-800 text-white font-bold text-xs rounded-full transition-all shadow">
+                        <i class="fa-solid fa-phone mr-2"></i> Call Us: (401) 725-5670
+                    </a>
+                    <button onclick="openModal('contact')" class="px-6 py-3 bg-brand-50 hover:bg-white text-brand-900 font-bold text-xs rounded-full transition-all shadow">
+                        <i class="fa-regular fa-envelope mr-1.5"></i> Email the Kitchen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="py-16 bg-white border-t border-brand-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hours & Location Card -->
+                <div class="lg:col-span-5 bg-brand-50 p-8 rounded-3xl border border-brand-200 shadow-md">
+                    <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">Lincoln, Rhode Island</span>
+                    <h2 class="font-serif text-3xl font-bold text-brand-900 mt-1 mb-6">Diner Hours & Contact</h2>
+
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between items-center py-2 border-b border-brand-200 text-sm">
+                            <span class="text-gray-500 font-medium">Monday</span>
+                            <span class="bg-red-100 text-red-700 px-3 py-0.5 rounded-full font-bold text-xs">CLOSED</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-brand-200 text-sm">
+                            <span class="text-gray-800 font-bold">Tuesday</span>
+                            <span class="text-brand-900 font-semibold">6:00 AM – 1:00 PM</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-brand-200 text-sm">
+                            <span class="text-gray-800 font-bold">Wednesday</span>
+                            <span class="text-brand-900 font-semibold">6:00 AM – 1:00 PM</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-brand-200 text-sm">
+                            <span class="text-gray-800 font-bold">Thursday</span>
+                            <span class="text-brand-900 font-semibold">6:00 AM – 1:00 PM</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-brand-200 text-sm">
+                            <span class="text-gray-800 font-bold">Friday</span>
+                            <span class="text-brand-900 font-semibold">6:00 AM – 1:00 PM</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-brand-200 text-sm">
+                            <span class="text-gray-800 font-bold">Saturday</span>
+                            <span class="text-brand-900 font-semibold">6:00 AM – 1:00 PM</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 text-sm">
+                            <span class="text-gray-800 font-bold">Sunday</span>
+                            <span class="text-brand-900 font-semibold">6:00 AM – 1:00 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-2 text-xs text-gray-700">
+                        <p class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-map-pin text-brand-600 mt-0.5"></i> 
+                            <span><strong>Address:</strong> 1517 Old Louisquisset Pike, Lincoln, RI 02865</span>
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-brand-600"></i> 
+                            <span><strong>Phone:</strong> <a href="tel:4017255670" class="text-brand-700 underline font-bold">(401) 725-5670</a></span>
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-envelope text-brand-600"></i> 
+                            <span><strong>Email:</strong> courtneydolan1488@gmail.com</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Map Box -->
+                <div class="lg:col-span-7 bg-brand-100 rounded-3xl overflow-hidden h-96 relative border-2 border-brand-200 shadow-md flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1200&auto=format&fit=crop" alt="Map Location Lincoln RI" class="absolute inset-0 w-full h-full object-cover opacity-75">
+                    <div class="relative z-10 bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-xl max-w-sm text-center border border-brand-200">
+                        <i class="fa-solid fa-utensils text-brand-600 text-3xl mb-2"></i>
+                        <h4 class="font-serif font-bold text-brand-900 text-base">Shanna's Country Kitchen</h4>
+                        <p class="text-xs text-gray-600 mt-1 mb-4">1517 Old Louisquisset Pike, Lincoln, RI 02865</p>
+                        <a href="https://maps.google.com/?q=1517+Old+Louisquisset+Pike,+Lincoln,+RI+02865" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold rounded-full transition-colors shadow">
+                            <i class="fa-solid fa-directions mr-2"></i> Get Google Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-900 text-brand-200 py-12 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-brand-600 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-mug-hot text-sm"></i>
+                    </div>
+                    <span class="font-serif font-bold text-lg text-white">Shanna's Kitchen</span>
+                </div>
+                <p class="text-xs text-brand-200/80 leading-relaxed">Lincoln, Rhode Island's cozy breakfast and lunch diner spot.</p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3">Quick Links</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#menu" class="hover:text-white transition-colors">Complete Menu</a></li>
+                    <li><a href="#specials" class="hover:text-white transition-colors">Whiteboard Specials</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors">About Shanna's</a></li>
+                    <li><a href="#location" class="hover:text-white transition-colors">Hours & Location</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3">Lincoln Location</h4>
+                <ul class="space-y-2 text-xs">
+                    <li>1517 Old Louisquisset Pike</li>
+                    <li>Lincoln, RI 02865</li>
+                    <li><a href="tel:4017255670" class="underline font-bold text-brand-300">(401) 725-5670</a></li>
+                    <li>courtneydolan1488@gmail.com</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3">Kitchen Hours</h4>
+                <ul class="space-y-1.5 text-xs text-brand-200">
+                    <li>Tue–Sun: 6:00 AM – 1:00 PM</li>
+                    <li class="text-red-400 font-bold">Monday: Closed</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-brand-800/80 pt-6 text-center text-[11px] text-brand-300/60">
+            © <span id="year"></span> Shanna's Country Kitchen. All Rights Reserved. Lincoln, Rhode Island.
+        </div>
+    </footer>
+
+    <div class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-brand-900 border-t border-brand-700 p-2.5 flex items-center justify-around shadow-lg">
+        <a href="tel:4017255670" class="flex-1 mr-2 text-center py-2.5 bg-sage-700 text-white rounded-full font-bold text-xs shadow flex items-center justify-center gap-2">
+            <i class="fa-solid fa-phone"></i> Call Takeout
+        </a>
+        <a href="https://maps.google.com/?q=1517+Old+Louisquisset+Pike,+Lincoln,+RI+02865" target="_blank" class="flex-1 text-center py-2.5 bg-brand-700 text-white rounded-full font-bold text-xs shadow flex items-center justify-center gap-2">
+            <i class="fa-solid fa-location-dot"></i> Directions
+        </a>
+    </div>
+
+    <div id="contact-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 relative shadow-2xl border border-brand-200">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 mx-auto flex items-center justify-center text-xl mb-2">
+                    <i class="fa-regular fa-paper-plane"></i>
+                </div>
+                <h3 class="font-serif font-bold text-2xl text-brand-900">Send a Note to Shanna's Kitchen</h3>
+                <p class="text-xs text-gray-500 mt-1">Directly emails courtneydolan1488@gmail.com</p>
+            </div>
+
+            <form onsubmit="handleContactSubmit(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Your Name</label>
+                    <input type="text" required placeholder="Jane Doe" class="w-full p-3 bg-brand-50 border border-brand-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-400">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-gray-700 mb-1">Your Phone</label>
+                        <input type="tel" required placeholder="(401) 000-0000" class="w-full p-3 bg-brand-50 border border-brand-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-400">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-gray-700 mb-1">Your Email</label>
+                        <input type="email" required placeholder="jane@example.com" class="w-full p-3 bg-brand-50 border border-brand-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Message / Question</label>
+                    <textarea required placeholder="Ask about catering, party group seating, or menu items..." class="w-full p-3 bg-brand-50 border border-brand-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-400 h-24"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-brand-700 hover:bg-brand-800 text-white font-bold rounded-xl text-sm transition-all shadow">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-16 md:bottom-5 right-5 z-50 bg-brand-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center space-x-3 transform translate-y-20 opacity-0 transition-all duration-300">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-msg" class="text-xs font-semibold">Message sent!</span>
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ACCURATE 39 MENU DATASET FROM ARCHIVE
+        const menuItems = [
+            // EGGS & PLATES
+            { id: 1, name: "One Egg Plate", price: 4.50, category: "Eggs & Plates", desc: "One fresh egg cooked your way, served with home fries and buttered toast.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=400&auto=format&fit=crop" },
+            { id: 2, name: "Two Eggs Plate", price: 5.75, category: "Eggs & Plates", desc: "Two farm-fresh eggs cooked to order with seasoned home fries and choice of toast.", veg: true, popular: true, img: "https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=400&auto=format&fit=crop" },
+            { id: 3, name: "Three Eggs Plate", price: 6.75, category: "Eggs & Plates", desc: "Three fresh eggs with double portion seasoned home fries and warm toast.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=400&auto=format&fit=crop" },
+            { id: 4, name: "Hungry Man Breakfast", price: 12.99, category: "Eggs & Plates", desc: "3 eggs, 2 bacon strips, 2 sausage links, thick ham slice, home fries & 2 buttermilk pancakes.", veg: false, popular: true, img: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=400&auto=format&fit=crop" },
+            { id: 5, name: "Side of Bacon", price: 3.50, category: "Eggs & Plates", desc: "Four thick strips of hickory smoked crispy bacon.", veg: false, popular: false, img: "https://images.unsplash.com/photo-1606851094655-b2593a9af63f?q=80&w=400&auto=format&fit=crop" },
+            { id: 6, name: "Side of Sausage Links", price: 3.50, category: "Eggs & Plates", desc: "Three savory breakfast pork sausage links.", veg: false, popular: false, img: "https://images.unsplash.com/photo-1584177188002-86105f77fa8f?q=80&w=400&auto=format&fit=crop" },
+            { id: 7, name: "Side of Thick-Cut Ham", price: 3.75, category: "Eggs & Plates", desc: "Grilled country ham steak topped with a light maple glaze.", veg: false, popular: false, img: "https://images.unsplash.com/photo-1524182576066-1d963e941b71?q=80&w=400&auto=format&fit=crop" },
+
+            // OMELETS
+            { id: 8, name: "Plain Cheese Omelet", price: 7.25, category: "Omelets", desc: "Three fluffy eggs folded with choice of melted American, Cheddar, or Swiss cheese.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=400&auto=format&fit=crop" },
+            { id: 9, name: "Western Omelet", price: 9.50, category: "Omelets", desc: "Diced ham, crisp green peppers, onions, and sharp cheddar cheese.", veg: false, popular: true, img: "https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=400&auto=format&fit=crop" },
+            { id: 10, name: "Veggie Loaded Omelet", price: 9.25, category: "Omelets", desc: "Sautéed spinach, mushrooms, diced tomatoes, onions, and bell peppers.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=400&auto=format&fit=crop" },
+            { id: 11, name: "Meat Lovers Omelet", price: 11.50, category: "Omelets", desc: "Packed with bacon, sausage, diced ham, and melted cheddar cheese.", veg: false, popular: true, img: "https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=400&auto=format&fit=crop" },
+            { id: 12, name: "Greek Omelet", price: 9.75, category: "Omelets", desc: "Fresh spinach, chopped olives, tomatoes, and crumbled feta cheese.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=400&auto=format&fit=crop" },
+
+            // BENEDICT VAULT
+            { id: 13, name: "Traditional Eggs Benedict", price: 10.50, category: "The Benedict Vault", desc: "Poached eggs & Canadian bacon on an English muffin with warm Hollandaise sauce.", veg: false, popular: true, img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=400&auto=format&fit=crop" },
+            { id: 14, name: "Homemade Hash Benedict", price: 12.99, category: "The Benedict Vault", desc: "English muffin topped with Shanna's corned beef hash, poached eggs, and hollandaise.", veg: false, popular: true, img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=400&auto=format&fit=crop" },
+            { id: 15, name: "Avocado & Tomato Benny", price: 11.99, category: "The Benedict Vault", desc: "Fresh sliced avocado, ripe tomato, poached eggs & house hollandaise sauce.", veg: true, popular: true, img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=400&auto=format&fit=crop" },
+            { id: 16, name: "Hawaiian Benedict", price: 11.50, category: "The Benedict Vault", desc: "Grilled pineapple, thick ham, poached eggs, and sweet teriyaki hollandaise.", veg: false, popular: false, img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=400&auto=format&fit=crop" },
+            { id: 17, name: "Spinach & Feta Benedict", price: 11.25, category: "The Benedict Vault", desc: "Sautéed garlic spinach, crumbled feta cheese, poached eggs, hollandaise sauce.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=400&auto=format&fit=crop" },
+
+            // SWEET GRIDDLE & CREPES
+            { id: 18, name: "Classic Buttermilk Pancakes", price: 7.50, category: "Sweet Griddle & Crepes", desc: "Three fluffy stack pancakes served with whipped butter & warm syrup.", veg: true, popular: true, img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=400&auto=format&fit=crop" },
+            { id: 19, name: "Thick-Cut French Toast", price: 7.50, category: "Sweet Griddle & Crepes", desc: "Texas toast dipped in cinnamon vanilla custard batter, dusted with powdered sugar.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1484723091499-aa380f56dd37?q=80&w=400&auto=format&fit=crop" },
+            { id: 20, name: "Banana Peanut Butter Chip Pancakes", price: 9.75, category: "Sweet Griddle & Crepes", desc: "Fresh sliced bananas & melted peanut butter chips cooked into buttermilk batter.", veg: true, popular: true, img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=400&auto=format&fit=crop" },
+            { id: 21, name: "Blueberry or Chocolate Chip Pancakes", price: 8.75, category: "Sweet Griddle & Crepes", desc: "Loaded with plump blueberries or dark chocolate chips.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=400&auto=format&fit=crop" },
+            { id: 22, name: "Oreo Stuffed Waffles", price: 9.99, category: "Sweet Griddle & Crepes", desc: "Baked with Oreo cookie crumbles inside, topped with whipped cream & drizzle.", veg: true, popular: true, img: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?q=80&w=400&auto=format&fit=crop" },
+            { id: 23, name: "Fresh Fruit Breakfast Crepes", price: 9.50, category: "Sweet Griddle & Crepes", desc: "Crepes filled with sweet cream, fresh strawberries, and blueberries.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=400&auto=format&fit=crop" },
+
+            // SAVORY SKILLETS & MELTS
+            { id: 24, name: "Shanna's Famous Corned Beef Hash Plate", price: 11.99, category: "Savory Skillets & Melts", desc: "Scratch-made corned beef hash, 2 eggs, home fries, and buttered toast.", veg: false, popular: true, img: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=400&auto=format&fit=crop" },
+            { id: 25, name: "The Country Breakfast Skillet", price: 12.50, category: "Savory Skillets & Melts", desc: "Home fries topped with sausage gravy, melted cheddar, peppers & 2 fried eggs.", veg: false, popular: true, img: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=400&auto=format&fit=crop" },
+            { id: 26, name: "Western Avocado Melt", price: 10.99, category: "Savory Skillets & Melts", desc: "Scrambled eggs, sliced avocado, ham, onions, and pepper jack on sourdough.", veg: false, popular: false, img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=400&auto=format&fit=crop" },
+            { id: 27, name: "Huevos Rancheros Plate", price: 11.25, category: "Savory Skillets & Melts", desc: "Warm tortillas, black beans, 2 sunny eggs, salsa, avocado & cotija cheese.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=400&auto=format&fit=crop" },
+            { id: 28, name: "Breakfast Quesadilla", price: 9.99, category: "Savory Skillets & Melts", desc: "Crispy flour tortilla packed with scrambled eggs, bacon, cheddar & salsa.", veg: false, popular: false, img: "https://images.unsplash.com/photo-1618040996337-56904b7850b9?q=80&w=400&auto=format&fit=crop" },
+
+            // DINER LUNCH SELECTIONS
+            { id: 29, name: "Cheddar Mushroom Burger", price: 11.95, category: "Diner Lunch Selections", desc: "1/2 lb fresh beef patty, sautéed mushrooms, aged cheddar on brioche.", veg: false, popular: true, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=400&auto=format&fit=crop" },
+            { id: 30, name: "Classic Cheeseburger", price: 10.50, category: "Diner Lunch Selections", desc: "1/2 lb beef patty, melted American cheese, pickles & special sauce.", veg: false, popular: false, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop" },
+            { id: 31, name: "Tuna Melt on Pumpernickel", price: 9.95, category: "Diner Lunch Selections", desc: "White albacore tuna salad, tomato, melted Swiss on toasted pumpernickel.", veg: false, popular: false, img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=400&auto=format&fit=crop" },
+            { id: 32, name: "Turkey Club Sandwich", price: 10.99, category: "Diner Lunch Selections", desc: "Triple-decker roasted turkey breast, bacon, lettuce, tomato & mayo on toast.", veg: false, popular: true, img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=400&auto=format&fit=crop" },
+            { id: 33, name: "Classic BLT", price: 7.50, category: "Diner Lunch Selections", desc: "Hickory bacon, fresh lettuce, vine-ripe tomatoes, mayonnaise on white toast.", veg: false, popular: false, img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=400&auto=format&fit=crop" },
+            { id: 34, name: "Gourmet Grilled Cheese", price: 6.99, category: "Diner Lunch Selections", desc: "Sharp cheddar, Swiss, and American cheese butter-crusted on sourdough.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=400&auto=format&fit=crop" },
+
+            // LIQUID LIBRARY
+            { id: 35, name: "Bottomless Premium Hot Coffee", price: 2.99, category: "Liquid Library (Beverages)", desc: "Medium dark roast brewed continuously with endless warm refills.", veg: true, popular: true, img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400&auto=format&fit=crop" },
+            { id: 36, name: "Flavored Iced Coffee", price: 3.75, category: "Liquid Library (Beverages)", desc: "Espresso cold brew with choices: S'Mores, Waffle Cone, Mocha Turtle, Raspberry Chocolate, or Jmocha.", veg: true, popular: true, img: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=400&auto=format&fit=crop" },
+            { id: 37, name: "Hot Tea Selection", price: 2.50, category: "Liquid Library (Beverages)", desc: "Assorted Earl Grey, English Breakfast, Green, or Herbal teas.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=400&auto=format&fit=crop" },
+            { id: 38, name: "Fresh Orange Juice", price: 3.25, category: "Liquid Library (Beverages)", desc: "100% pure squeezed chilled orange juice.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1613478223719-2ab802602423?q=80&w=400&auto=format&fit=crop" },
+            { id: 39, name: "Chocolate Milk", price: 2.99, category: "Liquid Library (Beverages)", desc: "Rich farm whole milk blended with chocolate.", veg: true, popular: false, img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=400&auto=format&fit=crop" }
+        ];
+
+        const categories = [
+            "All",
+            "Eggs & Plates",
+            "Omelets",
+            "The Benedict Vault",
+            "Sweet Griddle & Crepes",
+            "Savory Skillets & Melts",
+            "Diner Lunch Selections",
+            "Liquid Library (Beverages)"
+        ];
+
+        let selectedCategory = "All";
+
+        window.addEventListener('DOMContentLoaded', () => {
+            checkOpenStatus();
+            renderCategories();
+            filterMenuItems();
+        });
+
+        // Dynamic Open/Closed Status
+        function checkOpenStatus() {
+            const now = new Date();
+            const day = now.getDay(); 
+            const hour = now.getHours();
+
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('status-text');
+
+            const isMonday = (day === 1);
+            const isOpenTime = (hour >= 6 && hour < 13);
+
+            if (!isMonday && isOpenTime) {
+                statusDot.className = "w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse";
+                statusText.innerHTML = "<span class='text-emerald-300 font-bold'>OPEN NOW</span> — Griddle is Hot in Lincoln!";
+            } else {
+                statusDot.className = "w-2.5 h-2.5 rounded-full bg-rose-500";
+                statusText.innerHTML = "<span class='text-rose-300 font-bold'>CLOSED NOW</span> — Opens Tue 6:00 AM";
+            }
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('category-tabs');
+            container.innerHTML = categories.map(cat => {
+                const isActive = cat === selectedCategory;
+                return `
+                    <button onclick="setCategory('${cat}')" class="px-5 py-2 rounded-full font-semibold text-xs whitespace-nowrap transition-all ${
+                        isActive 
+                        ? 'bg-brand-700 text-white shadow-md' 
+                        : 'bg-white border border-brand-200 text-brand-900 hover:bg-brand-100'
+                    }">
+                        ${cat}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function setCategory(cat) {
+            selectedCategory = cat;
+            renderCategories();
+            filterMenuItems();
+        }
+
+        function filterMenuItems() {
+            const searchVal = document.getElementById('menu-search').value.toLowerCase();
+            const dietaryVal = document.getElementById('dietary-filter').value;
+            const sortVal = document.getElementById('price-sort').value;
+
+            let filtered = menuItems.filter(item => {
+                const matchesCategory = selectedCategory === "All" || item.category === selectedCategory;
+                const matchesSearch = item.name.toLowerCase().includes(searchVal) || item.desc.toLowerCase().includes(searchVal);
+                
+                let matchesDietary = true;
+                if (dietaryVal === "vegetarian") matchesDietary = item.veg;
+                if (dietaryVal === "popular") matchesDietary = item.popular;
+
+                return matchesCategory && matchesSearch && matchesDietary;
+            });
+
+            if (sortVal === "low-high") {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortVal === "high-low") {
+                filtered.sort((a, b) => b.price - a.price);
+            }
+
+            renderGrid(filtered);
+        }
+
+        function renderGrid(items) {
+            const grid = document.getElementById('menu-grid');
+            const noResults = document.getElementById('no-results');
+
+            if (items.length === 0) {
+                grid.innerHTML = "";
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            grid.innerHTML = items.map(item => `
+                <div class="bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden bg-brand-100">
+                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-md font-serif font-bold text-brand-900 text-sm px-3 py-1 rounded-full shadow">
+                                $${item.price.toFixed(2)}
+                            </div>
+                            ${item.popular ? `
+                                <div class="absolute top-3 left-3 bg-brand-500 text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded-full shadow">
+                                    <i class="fa-solid fa-star mr-1"></i> Favorite
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-serif font-bold text-lg text-brand-900 group-hover:text-brand-600 transition-colors">${item.name}</h3>
+                            <p class="text-xs text-gray-500 mt-2 leading-relaxed line-clamp-2">${item.desc}</p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-0 flex items-center justify-between mt-2 border-t border-brand-50">
+                        <span class="text-[11px] text-brand-600 font-semibold">${item.category}</span>
+                        <a href="tel:4017255670" class="px-3.5 py-2 bg-sage-50 hover:bg-sage-700 hover:text-white text-sage-800 font-bold text-xs rounded-xl transition-all flex items-center gap-1.5 border border-sage-200">
+                            <i class="fa-solid fa-phone text-[10px]"></i> Call Takeout
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function resetFilters() {
+            document.getElementById('menu-search').value = "";
+            document.getElementById('dietary-filter').value = "all";
+            document.getElementById('price-sort').value = "default";
+            selectedCategory = "All";
+            renderCategories();
+            filterMenuItems();
+        }
+
+        function openModal(type) {
+            document.getElementById('contact-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('contact-modal').classList.add('hidden');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            closeModal();
+            showToast("Your message was sent to courtneydolan1488@gmail.com!");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msg = document.getElementById('toast-msg');
+            msg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = "fa-solid fa-bars";
+            } else {
+                icon.className = "fa-solid fa-xmark";
+            }
+        }
+    </script>
+</body>
